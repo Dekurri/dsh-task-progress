@@ -11,7 +11,9 @@
 
 `Topics: dsh-plugin · deepseek-harness · task-progress · tqdm · pip · training`
 
-![progress card preview](docs/preview.svg)
+![dsh-task-progress 真实运行截图：3 个并发任务（pip 阶段 / epoch 训练 / 百分比）](docs/preview.png)
+
+> 上图是插件在 DSH 里的真实运行截图（`demo/showcase.py` 与 epoch / pip 演示任务并发运行时的状态）。
 
 ```
 输入卡上方（浮动层，不挤压输入框）
@@ -56,7 +58,7 @@
 
 ```sh
 # 下载后将 tgz 解压到长期保存的目录（不要放临时目录：安装是符号链接，删掉源目录插件即失效）
-mkdir -p ~/dsh-plugins && tar -xzf dsh-task-progress-0.1.0.tgz -C ~/dsh-plugins
+mkdir -p ~/dsh-plugins && tar -xzf dsh-task-progress-0.1.1.tgz -C ~/dsh-plugins
 ```
 
 然后在 DSH 插件管理器里按**绝对路径**安装解压出来的 bundle 目录（GUI 的插件管理界面，或让 AI 助手调用
@@ -97,9 +99,13 @@ python3 demo/progress_demo.py --mode epoch --seconds 60
 
 # pip 安装阶段（没有百分比，卡片显示阶段 + 不确定进度条）
 python3 demo/progress_demo.py --mode pip
+
+# 特征最全的一次跑法：tqdm -> epoch+step -> pip 阶段 -> 裸百分比 -> ANSI 彩色行
+python3 demo/showcase.py --seconds 9
 ```
 
 在 DSH 里让 agent 用 `bash` / `ops_bash` 跑上面任意一条（前台或后台都行），输入卡上沿就会出现卡片。
+想看多任务折叠效果，可以同时跑三条（例如 `showcase.py` + epoch + pip）。
 
 ## 原理
 
@@ -159,7 +165,7 @@ python3 demo/progress_demo.py --mode pip
 | `test/render.test.mjs` | 用 React 18 SSR 渲染真实组件，断言槽位元数据、字典注册、空态、tqdm 卡、pip 不确定态、stopping 态、全部 `t()` key 双语覆盖 |
 | `.github/workflows/ci.yml` | push / PR 全量跑上面的检查 + `node --check` + `npm pack --dry-run` |
 | `.github/workflows/release.yml` | 打 `v*` tag 时重新跑检查、校验 tag 与 `package.json` 版本一致、`npm pack` 并创建 Release |
-| `CODEOWNERS` / 分支保护 | 合入需要 owner review 与 CI 通过，禁止强推/删除 main（见 INSTALL.md 的「发布流程」） |
+| `CODEOWNERS` / 分支保护 | 合入需要通过 CI（`verify bundle`），禁止强推/删除 main（见 INSTALL.md 的「发布流程」） |
 | `dependabot.yml` | 每周检查 devDependencies 与 GitHub Actions 更新 |
 
 ## 兼容性
@@ -179,9 +185,10 @@ dsh-task-progress/
 ├─ locale/{en,zh}.json    # 插件管理界面显示名/描述
 ├─ icon.svg               # 插件图标
 ├─ demo/progress_demo.py  # 无依赖演示脚本（tqdm / epoch / pip）
+├─ demo/showcase.py       # 一次跑完所有解析格式的演示脚本
 ├─ test/                  # 解析单测 + React SSR 渲染测试
 ├─ scripts/               # static-check（插件护栏）+ secret-scan
-├─ docs/preview.svg       # README 示意图（示意，非截图）
+├─ docs/preview.png       # README 预览图（插件真实运行截图）
 ├─ .github/               # CI、Release、Dependabot、Issue/PR 模板、CODEOWNERS
 ├─ CONTRACT.md            # 与 DSH 的集成契约与版本风险
 ├─ INSTALL.md             # 三种安装路径 + 发布流程 + 排错

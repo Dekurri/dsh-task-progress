@@ -1,6 +1,6 @@
 {
   "name": "dsh-task-progress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Floating live progress card for DeepSeek Harness: pip installs, tqdm loops and training epochs with speed, ETA and one-click stop, right above the composer.",
   "keywords": [

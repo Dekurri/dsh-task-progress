@@ -6,6 +6,21 @@ the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-09
+
+### Added
+
+- `demo/showcase.py`: one run that cycles through every supported format (tqdm bar,
+  epoch + step training log, pip stages, bare percentage, ANSI-colored lines), so the card
+  can be exercised with as many features as possible at once.
+- `docs/preview.png`: real screenshot of the card in DSH (three concurrent jobs: pip stages,
+  epoch training, bare percentage), replacing the hand-drawn schematic.
+
+### Changed
+
+- README preview now uses the real screenshot and the demo section documents the showcase
+  script; Python caches (`__pycache__/`, `*.pyc`) are ignored.
+
 ## [0.1.0] - 2026-11-09
 
 ### Added
