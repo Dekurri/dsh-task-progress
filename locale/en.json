@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Task Progress",
+    "description": "Live progress cards for running background jobs (pip installs, training epochs, long commands) above the composer, with speed, ETA and a stop button."
+  }
+}

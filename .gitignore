@@ -1,0 +1,33 @@
+# ── 依赖与构建产物 ────────────────────────────────────────────────
+node_modules/
+dist/
+build/
+*.tgz
+*.tar.gz
+*.zip
+
+# ── 本地开发/测试临时文件（绝不入库） ─────────────────────────────
+.tmp/
+.tmp-*/
+*.tmp
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# ── 密钥与本地环境 ────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+
+# ── 编辑器 / 操作系统 ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

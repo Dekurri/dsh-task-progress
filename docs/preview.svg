@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="230" viewBox="0 0 760 230" role="img" aria-label="Schematic of the task progress card floating above the DSH composer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f8fb"/>
+      <stop offset="1" stop-color="#e9eef6"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2f6feb"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="230" rx="14" fill="url(#bg)"/>
+  <text x="24" y="28" font-family="ui-sans-serif,system-ui,'Segoe UI',sans-serif" font-size="13" fill="#64748b">
+    DSH · conversation.input.overlay (schematic, not a screenshot)
+  </text>
+
+  <!-- chat area hint -->
+  <rect x="24" y="44" width="712" height="74" rx="10" fill="#ffffff" opacity="0.55"/>
+  <rect x="40" y="60" width="300" height="9" rx="4.5" fill="#cbd5e1"/>
+  <rect x="40" y="78" width="220" height="9" rx="4.5" fill="#dbe3ee"/>
+  <rect x="40" y="96" width="260" height="9" rx="4.5" fill="#dbe3ee"/>
+
+  <!-- floating progress card -->
+  <g font-family="ui-sans-serif,system-ui,'Segoe UI',sans-serif">
+    <rect x="112" y="118" width="536" height="86" rx="12" fill="#ffffff" stroke="#c7d6ea"/>
+    <circle cx="132" cy="136" r="4" fill="#2f6feb"/>
+    <text x="146" y="141" font-size="13" font-weight="600" fill="#1f2937">任务进度</text>
+    <text x="210" y="141" font-size="12" fill="#64748b">运行中 1 项</text>
+    <text x="596" y="141" font-size="12" fill="#94a3b8">收起</text>
+    <text x="132" y="157" font-size="11" fill="#94a3b8">bash · python train.py</text>
+    <text x="132" y="176" font-size="14" font-weight="700" fill="#2f6feb">45 %</text>
+    <text x="186" y="176" font-size="12" fill="#334155">450 / 1000 项</text>
+    <rect x="132" y="182" width="380" height="6" rx="3" fill="#e2e8f0"/>
+    <rect x="132" y="182" width="171" height="6" rx="3" fill="url(#bar)"/>
+    <text x="132" y="199" font-size="11" fill="#64748b">1.2 it/s · 预计剩余 15秒 · 已用 14秒</text>
+    <rect x="536" y="166" width="92" height="26" rx="13" fill="#fff" stroke="#e11d48"/>
+    <text x="566" y="184" font-size="12" fill="#e11d48">停止</text>
+  </g>
+
+  <!-- composer hint -->
+  <rect x="112" y="208" width="536" height="16" rx="8" fill="#ffffff" stroke="#d7e0ec" opacity="0.9"/>
+  <text x="132" y="220" font-size="9" fill="#a8b6c8">composer card (height unchanged)</text>
+</svg>

@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: verify bundle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dev dependencies
+        run: npm ci
+
+      - name: Syntax check
+        run: |
+          node --check index.js
+          node --check client.js
+          for f in scripts/*.mjs test/*.mjs demo/*.py; do
+            case "$f" in
+              *.py) python3 -m py_compile "$f" ;;
+              *) node --check "$f" ;;
+            esac
+          done
+
+      - name: Static plugin guards
+        run: node scripts/static-check.mjs
+
+      - name: Secret / local-path scan
+        run: node scripts/secret-scan.mjs
+
+      - name: Parser tests
+        run: node test/parse.test.mjs
+
+      - name: Render tests (React SSR)
+        run: node test/render.test.mjs
+
+      - name: Package dry-run
+        run: npm pack --dry-run

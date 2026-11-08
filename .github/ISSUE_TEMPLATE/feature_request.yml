@@ -1,0 +1,31 @@
+name: Feature request
+description: Suggest a new progress source, format or interaction.
+title: "[feat] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What job or output format is not handled today?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example output / format
+      description: Paste a few representative lines so the parser can be extended safely.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Suggested behaviour
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This can be derived from the task's stdout/stderr (the plugin has no Host-side state).
+        - label: I am willing to send a PR.

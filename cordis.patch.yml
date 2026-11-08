@@ -1,0 +1,6 @@
+# dsh-task-progress: registers a client-only plugin that renders live progress
+# cards for running jobs above the composer. The Host half is intentionally
+# empty; all state comes from the shipped `jobs` client service.
+- insert:
+    - id: task-progress
+      name: dsh-task-progress

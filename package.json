@@ -1,0 +1,78 @@
+{
+  "name": "dsh-task-progress",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Floating live progress card for DeepSeek Harness: pip installs, tqdm loops and training epochs with speed, ETA and one-click stop, right above the composer.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "task-progress",
+    "progress-bar",
+    "tqdm",
+    "pip",
+    "training",
+    "epoch"
+  ],
+  "homepage": "https://github.com/Dekurri/dsh-task-progress#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dekurri/dsh-task-progress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dekurri/dsh-task-progress/issues"
+  },
+  "author": "Dekurri",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "demo/**",
+    "docs/**",
+    "README.md",
+    "INSTALL.md",
+    "CONTRACT.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node scripts/static-check.mjs && node scripts/secret-scan.mjs",
+    "test": "npm run test:parse && npm run test:render",
+    "test:parse": "node test/parse.test.mjs",
+    "test:render": "node test/render.test.mjs",
+    "verify": "npm run check && npm test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-api-job-controller",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

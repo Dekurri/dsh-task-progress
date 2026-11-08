@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Task Progress">
+  <defs>
+    <linearGradient id="tp-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="tp-fill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#tp-bg)"/>
+  <rect x="13" y="30" width="5" height="14" rx="2.5" fill="#ffffff" opacity="0.55"/>
+  <rect x="22" y="24" width="5" height="20" rx="2.5" fill="#ffffff" opacity="0.75"/>
+  <rect x="31" y="18" width="5" height="26" rx="2.5" fill="#ffffff"/>
+  <rect x="13" y="49" width="38" height="5" rx="2.5" fill="#ffffff" opacity="0.35"/>
+  <rect x="13" y="49" width="24" height="5" rx="2.5" fill="url(#tp-fill)"/>
+  <circle cx="48" cy="28" r="3" fill="#ffffff" opacity="0.85"/>
+</svg>

@@ -1,0 +1,20 @@
+# 统一用 LF，避免 Windows 检出时整仓 CRLF 噪声
+* text=auto eol=lf
+
+*.js    text eol=lf
+*.mjs   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.md    text eol=lf
+*.svg   text eol=lf
+*.py    text eol=lf
+
+# 二进制/资源
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.tgz   binary
+
+# 导出的压缩包与依赖目录不计入语言统计
+*.tgz   linguist-vendored

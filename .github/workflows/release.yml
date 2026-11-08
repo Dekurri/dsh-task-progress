@@ -1,0 +1,67 @@
+name: release
+
+# Push a version tag (e.g. v0.1.0) and this workflow verifies the bundle, packs
+# the npm tarball and attaches it to a GitHub Release.
+#
+#   git tag v0.1.0 && git push origin v0.1.0
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: verify, pack and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dev dependencies
+        run: npm ci
+
+      - name: Static guards
+        run: |
+          node scripts/static-check.mjs
+          node scripts/secret-scan.mjs
+
+      - name: Tests
+        run: |
+          node test/parse.test.mjs
+          node test/render.test.mjs
+
+      - name: Check the tag matches package.json
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          version="$(node -p "require('./package.json').version")"
+          if [ "$tag" != "$version" ]; then
+            echo "tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+
+      - name: Pack bundle
+        run: |
+          mkdir -p dist
+          npm pack --pack-destination dist
+          ls -l dist
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes \
+            dist/*.tgz

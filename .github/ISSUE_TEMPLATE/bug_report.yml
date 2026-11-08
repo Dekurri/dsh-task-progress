@@ -1,0 +1,53 @@
+name: Bug report
+description: The progress card shows wrong data, does not appear, or breaks the composer.
+title: "[bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please include enough detail to reproduce the card state.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What the card showed vs. what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: The command that was running
+      description: The exact command, or a minimal reproduction (e.g. a python loop printing `45%|...`).
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Relevant output lines
+      description: Paste the last lines of the task output; the parser works on these.
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: DSH version and plugin version
+      placeholder: "DSH 0.2.1-rc.5, plugin 0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: How was the task started
+      options:
+        - Foreground tool call (agent waited)
+        - Background job (run_in_background)
+        - Not sure
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I attached a screenshot of the card when the problem is visual.
