@@ -34,11 +34,11 @@
 
    ```sh
    # macOS / Linux
-   mkdir -p ~/dsh-plugins && tar -xzf dsh-task-progress-0.1.0.tgz -C ~/dsh-plugins
+   mkdir -p ~/dsh-plugins && tar -xzf dsh-task-progress-0.1.1.tgz -C ~/dsh-plugins
 
    # Windows PowerShell
    mkdir "$env:USERPROFILE\dsh-plugins"
-   tar -xzf dsh-task-progress-0.1.0.tgz -C "$env:USERPROFILE\dsh-plugins"
+   tar -xzf dsh-task-progress-0.1.1.tgz -C "$env:USERPROFILE\dsh-plugins"
    ```
 
    解压后目录里应当直接能看到 `package.json`、`client.js`、`cordis.patch.yml`。
@@ -135,13 +135,13 @@ npm run verify     # 静态护栏 + 密钥扫描 + 解析单测 + 渲染测试
 4. 打 tag 并推送：
 
    ```sh
-   git tag v0.1.0
-   git push origin v0.1.0
+   git tag v0.1.1
+   git push origin v0.1.1
    ```
 
 5. `release.yml` 会自动：重新跑护栏与测试 → 校验版本 → `npm pack` → 创建 GitHub Release 并附 tgz。
-6. 仓库设置（一次性）：`main` 分支保护要求 CI 通过 + 1 个 review，禁止 force push 与删除；
-   `CODEOWNERS` 已指定 owner。
+6. 仓库设置（一次性）：`main` 分支保护要求 `verify bundle` CI 通过、禁止 force push 与删除、
+   要求对话解决；单人仓库无法满足 1 个外部 review，因此 review 数设为 0（`CODEOWNERS` 仍指定 owner）。
 
 发布检查清单：
 

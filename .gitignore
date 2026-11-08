@@ -22,6 +22,10 @@ pnpm-debug.log*
 *.key
 credentials.json
 
+# ── Python 缓存（demo 脚本可能产生） ───────────────────────────────
+__pycache__/
+*.py[cod]
+
 # ── 编辑器 / 操作系统 ─────────────────────────────────────────────
 .DS_Store
 Thumbs.db
