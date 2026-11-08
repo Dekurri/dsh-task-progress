@@ -1,5 +1,10 @@
 # dsh-task-progress · DSH 任务进度卡
 
+[![ci](https://github.com/Dekurri/dsh-task-progress/actions/workflows/ci.yml/badge.svg)](https://github.com/Dekurri/dsh-task-progress/actions/workflows/ci.yml)
+[![release](https://img.shields.io/github/v/release/Dekurri/dsh-task-progress)](https://github.com/Dekurri/dsh-task-progress/releases)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![DSH 0.2.x](https://img.shields.io/badge/DSH-0.2.x-4c6ef5.svg)](./CONTRACT.md)
+
 > 给 [DeepSeek Harness](https://github.com/deepseek-ai) 用的输入框浮动进度卡插件：正在跑的 `pip install`、`tqdm` 循环、
 > 模型训练 epoch，会在输入卡上沿实时显示**进度条、百分比/分数、速度、预计剩余、已用时长**，并可一键停止。
 > 纯前端实现，不轮询、不上报、不落盘。
